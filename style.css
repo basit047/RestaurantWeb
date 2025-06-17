@@ -1,0 +1,360 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", sans-serif;
+  background-color: #fffaf4;
+  color: #333;
+  line-height: 1.6;
+}
+
+header.hero {
+  background: url("images/pexels-chanwalrus-958545.jpg") center/cover no-repeat;
+  height: 100vh;
+  color: white;
+  position: relative;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.logo {
+  font-size: 1.8em;
+  font-weight: bold;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.nav-toggle {
+  display: none;
+  font-size: 1.5em;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+.hero-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.hero-text h2 {
+  font-size: 3em;
+  margin-bottom: 10px;
+}
+
+.btn {
+  background: #e63946;
+  color: white;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 5px;
+  text-decoration: none;
+  font-size: 1em;
+  display: inline-block;
+  margin-top: 20px;
+  cursor: pointer;
+}
+/* basit */
+.section {
+  /* padding: 60px 20px; */
+  /* max-width: 1000px; */
+  margin: auto;
+  text-align: center;
+}
+
+.menu-grid {
+  display: grid;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  margin-top: 30px;
+  margin-left: 100px;
+  height: 10vh;
+
+  grid-template-columns: repeat(3, 1fr); /* 3 cards per row on desktop */
+}
+
+.menu-grid-upper {
+  padding: 10px;
+  background: url("images/pexels-ash-craig-122861-376464.jpg") center/cover
+    no-repeat;
+  height: 100vh;
+
+  position: relative;
+  background-color: red;
+}
+
+.section-reservation-form {
+  padding: 10px;
+  background: url("images/pexels-ella-olsson-572949-1640774.jpg") center/cover
+    no-repeat;
+  height: 100vh;
+
+  position: relative;
+  background-color: red;
+}
+
+.menu-item {
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 20px;
+  width: 280px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.menu-item.clicked {
+  background-color: yellow;
+  box-shadow: 0 0 20px rgba(230, 57, 70, 0.3);
+  transform: scale(1.03);
+  border-color: #e63946;
+}
+
+.menu-card {
+  width: 280px;
+  max-width: 100%;
+  height: 150px;
+  perspective: 1000px;
+}
+
+/* .card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+} */
+
+.card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 15px; /* add some padding */
+  box-sizing: border-box;
+}
+
+/* Flip on hover */
+.menu-card:hover .card-inner {
+  transform: rotateY(180deg);
+}
+
+/* .card-front,
+.card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  backface-visibility: hidden;
+  background: white;
+  border: 1px solid #ddd;
+  padding: 20px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+} */
+.card-front,
+.card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  backface-visibility: hidden;
+  background: white;
+  border: 1px solid #ddd;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.card-front {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-front h3 {
+  margin-bottom: 10px;
+}
+
+.card-front span {
+  margin-top: 10px;
+  font-weight: bold;
+  color: #e63946;
+}
+
+/* .card-back {
+  transform: rotateY(180deg);
+  text-align: center;
+  background-color: #fef3f3;
+} */
+
+.card-back {
+  transform: rotateY(180deg);
+  background-color: #fef3f3;
+}
+
+.menu-item h3 {
+  margin-bottom: 5px;
+}
+
+.menu-item span {
+  color: #e63946;
+  font-weight: bold;
+  display: block;
+  margin-top: 10px;
+}
+
+.reservation-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  max-width: 400px;
+  margin: auto;
+}
+
+.reservation-form input,
+.reservation-form button {
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 1em;
+  border: 1px solid #aaa;
+}
+
+.reservation-form button {
+  background: #e63946;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+footer {
+  background: #222;
+  color: #ccc;
+  text-align: center;
+  padding: 30px 20px;
+  margin-top: 60px;
+}
+
+.card-front p,
+.card-back p {
+  word-wrap: break-word;
+  max-width: 100%;
+}
+
+#location-select {
+  padding: 8px 12px;
+  font-size: 1rem;
+  border: 2px solid #c49b63; /* warm gold color */
+  border-radius: 6px;
+  background-color: #fff8f0;
+  color: #5a3e1b;
+  cursor: pointer;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  min-width: 180px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+#location-select:hover,
+#location-select:focus {
+  border-color: #a3753a;
+  box-shadow: 0 0 6px rgba(163, 117, 58, 0.7);
+  outline: none;
+}
+
+#location-select option {
+  background-color: #fff8f0;
+  color: #5a3e1b;
+  padding: 8px;
+  font-size: 1rem;
+}
+
+/* ------------------------
+   Responsive Styling
+------------------------ */
+@media (max-width: 768px) {
+  .nav-toggle {
+    display: block;
+  }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    background: rgba(0, 0, 0, 0.9);
+    position: absolute;
+    top: 70px;
+    right: 0;
+    width: 200px;
+    padding: 20px;
+  }
+
+  .nav-links.show-nav {
+    display: flex;
+  }
+
+  .menu-grid {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .hero-text h2 {
+    font-size: 2em;
+  }
+}
+
+@media (max-width: 480px) {
+  .card-inner {
+    padding: 10px;
+  }
+  .card-front h3 {
+    font-size: 1.1rem;
+  }
+  .card-front p,
+  .card-back p {
+    font-size: 0.9rem;
+  }
+  .card-front span {
+    font-size: 1rem;
+  }
+}
+
+/* On smaller screens, stack cards vertically */
+@media (max-width: 768px) {
+  .menu-grid {
+    grid-template-columns: 1fr; /* 1 card per row */
+  }
+}

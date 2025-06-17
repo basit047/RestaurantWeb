@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Delicioso Restaurant</title>
+    <link rel="stylesheet" href="style.css" />
+    <script>
+      window.onload = function () {
+        const locationSelect = document.getElementById("location-select");
+        const footerAddress = document.getElementById("footer-address");
+        const heroHeading = document.getElementById("hero-heading");
+
+        updateMenu(locationSelect.value);
+
+        updateHeroHeading(locationSelect.value);
+        updateAddress(locationSelect.value);
+
+        function updateAddress(location) {
+          footerAddress.textContent = addresses[location];
+        }
+
+        function updateHeroHeading(location) {
+          heroHeading.textContent = `Welcome to Delicioso ${locationNames[location]}`;
+        }
+
+        // When location changes
+        locationSelect.addEventListener("change", (e) => {
+          updateMenu(e.target.value);
+          updateAddress(e.target.value);
+          updateHeroHeading(e.target.value);
+        });
+      };
+
+      const menus = {
+        ny: [
+          {
+            title: "Classic New York Pizza",
+            description: "Thin crust with fresh mozzarella & basil",
+            price: "€20",
+            ingredients: "Flour, mozzarella, tomato sauce, basil",
+          },
+          {
+            title: "Manhattan Clam Chowder",
+            description: "Hearty tomato-based clam soup",
+            price: "€18",
+            ingredients: "Clams, tomato, herbs",
+          },
+          {
+            title: "Fish Tacos",
+            description: "Grilled fish with spicy slaw and avocado",
+            price: "€22",
+            ingredients: "Fish, cabbage, avocado, tortillas",
+          },
+        ],
+        sf: [
+          {
+            title: "Dungeness Crab Salad",
+            description: "Fresh crab with mixed greens and citrus",
+            price: "€28",
+            ingredients: "Dungeness crab, greens, lemon",
+          },
+          {
+            title: "Sourdough Bread Bowl Soup",
+            description: "Creamy clam chowder served in sourdough",
+            price: "€24",
+            ingredients: "Sourdough, clam chowder",
+          },
+          {
+            title: "California Cobb Salad",
+            description: "Fresh veggies with chicken & blue cheese",
+            price: "€26",
+            ingredients: "Chicken, blue cheese, veggies",
+          },
+        ],
+      };
+
+      const addresses = {
+        ny: "📍 Via Sant’Egidio • 📞 (212) 555-1234 • ⏰ Mon–Fri: 08:30 – 15:00, Sat–Sun: 08:30 – 15:00",
+        sf: "📍 Via Porta Rossa • 📞 (415) 555-5678 • ⏰ Mon–Fri: 08:30 – 23:30, Sat–Sun: 08:30 – 23:30",
+      };
+
+      const locationNames = {
+        ny: "Via Sant’Egidio",
+        sf: "Via Porta Rossa",
+      };
+
+      function updateMenu(location) {
+        const menuGrid = document.querySelector(".menu-grid");
+        menuGrid.innerHTML = ""; // clear current cards
+
+        menus[location].forEach((item) => {
+          const card = document.createElement("div");
+          card.classList.add("menu-card");
+          card.innerHTML = `
+      <div class="card-inner">
+        <div class="card-front">
+          <h3>${item.title}</h3>
+          <p>${item.description}</p>
+          <span>${item.price}</span>
+        </div>
+        <div class="card-back">
+          <p><strong>Ingredients:</strong><br />${item.ingredients}</p>
+        </div>
+      </div>
+    `;
+          menuGrid.appendChild(card);
+        });
+      }
+    </script>
+  </head>
+  <body>
+    <header class="hero">
+      <nav>
+        <h1 class="logo">Delicioso</h1>
+        <button class="nav-toggle" aria-label="toggle menu">☰</button>
+        <ul class="nav-links">
+          <li><a href="#">Home</a></li>
+          <li><a href="#menu">Menu</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#reserve">Reservations</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+
+        <select id="location-select" aria-label="Select location">
+          <option value="ny">Via Sant’Egidio</option>
+          <option value="sf">Via Porta Rossa</option>
+        </select>
+      </nav>
+      <div class="hero-text">
+        <h2 id="hero-heading">Welcome to Delicioso</h2>
+        <p>Fine Dining & Fresh Ingredients</p>
+        <a href="#reserve" class="btn">Book a Table</a>
+      </div>
+    </header>
+
+    <section id="menu" class="section">
+      <h2><b>Our Menu</b></h2>
+      <div class="menu-grid-upper">
+        <div class="menu-grid">
+          <div class="menu-card">
+            <div class="card-inner">
+              <div class="card-front">
+                <h3>Seared Salmon</h3>
+                <p>With lemon butter & asparagus</p>
+                <span>€26</span>
+              </div>
+              <div class="card-back">
+                <p>
+                  <strong>Ingredients:</strong><br />Salmon, lemon, butter,
+                  asparagus, garlic
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="menu-card">
+            <div class="card-inner">
+              <div class="card-front">
+                <h3>Seared Salmon</h3>
+                <p>With lemon butter & asparagus</p>
+                <span>€26</span>
+              </div>
+              <div class="card-back">
+                <p>
+                  <strong>Ingredients:</strong><br />Salmon, lemon, butter,
+                  asparagus, garlic
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="menu-card">
+            <div class="card-inner">
+              <div class="card-front">
+                <h3>Steak Frites</h3>
+                <p>Grilled sirloin with herb fries</p>
+                <span>€30</span>
+              </div>
+              <div class="card-back">
+                <p>
+                  <strong>Ingredients:</strong><br />Sirloin, rosemary fries,
+                  Dijon aioli
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="section">
+      <h2><b>About Us</b></h2>
+      <p>
+        Delicioso is a family-owned restaurant serving quality meals since
+        1998.<br />
+        Our chefs use fresh, local ingredients and create a warm, inviting
+        atmosphere. <br />
+        We pride ourselves on crafting authentic dishes inspired by traditional
+        recipes, bringing the rich flavors of our heritage to every plate.<br />Whether
+        you're joining us for a casual lunch or a special dinner, we strive to
+        make every visit a memorable experience filled with delicious food,
+        friendly service, and a cozy ambiance that feels like home.
+      </p>
+    </section>
+
+    <section id="reserve" class="section">
+      <div class="section-reservation-form">
+        <h2><b>Reservations</b></h2>
+        <form class="reservation-form">
+          <input type="text" placeholder="Full Name" required />
+          <input type="email" placeholder="Email Address" required />
+          <input type="date" required />
+          <input type="time" required />
+          <input type="number" placeholder="Guests" required />
+          <button type="submit">Book Now</button>
+        </form>
+      </div>
+    </section>
+
+    <footer id="contact">
+      <p id="footer-address">
+        📍 123 Main Street, Foodville • 📞 (555) 123-4567 • ⏰ Mon–Fri:
+        10am–10pm, Sat–Sun: 11am–11pm
+      </p>
+      <p>&copy; 2025 Delicioso Restaurant</p>
+    </footer>
+
+    <script>
+      const navToggle = document.querySelector(".nav-toggle");
+      const navLinks = document.querySelector(".nav-links");
+
+      navToggle.addEventListener("click", () => {
+        navLinks.classList.toggle("show-nav");
+      });
+    </script>
+  </body>
+</html>
