@@ -10,6 +10,12 @@
         const locationSelect = document.getElementById("location-select");
         const footerAddress = document.getElementById("footer-address");
         const heroHeading = document.getElementById("hero-heading");
+        const navLinks = document.querySelectorAll(".nav-links a");
+        const dateInput = document.getElementById("reservation-date");
+        const form = document.querySelector(".reservation-form");
+
+        const today = new Date().toISOString().split("T")[0];
+        dateInput.setAttribute("min", today);
 
         updateMenu(locationSelect.value);
 
@@ -29,6 +35,42 @@
           updateMenu(e.target.value);
           updateAddress(e.target.value);
           updateHeroHeading(e.target.value);
+        });
+
+        navLinks.forEach((link) => {
+          link.addEventListener("click", function () {
+            navLinks.forEach((l) => l.classList.remove("active")); // Remove from all
+            this.classList.add("active"); // Add to clicked
+          });
+        });
+
+        form.addEventListener("submit", (e) => {
+          e.preventDefault(); // prevent actual form submit
+
+          // Get all input values
+          const fullName = form.querySelector('input[type="text"]').value;
+          const email = form.querySelector('input[type="email"]').value;
+          const date = dateInput.value;
+          const time = form.querySelector('input[type="time"]').value;
+          const guests = form.querySelector('input[type="number"]').value;
+
+          // Basic validation (optional, since you have required and min already)
+          if (guests <= 0) {
+            alert("Guests must be greater than 0");
+            return;
+          }
+          if (date < today) {
+            alert("Please select a valid date (not in the past)");
+            return;
+          }
+
+          // Show collected data in alert
+          alert(`Reservation Details:
+Name: ${fullName}
+Email: ${email}
+Date: ${date}
+Time: ${time}
+Guests: ${guests}`);
         });
       };
 
@@ -115,7 +157,7 @@
         <h1 class="logo">Delicioso</h1>
         <button class="nav-toggle" aria-label="toggle menu">☰</button>
         <ul class="nav-links">
-          <li><a href="#">Home</a></li>
+          <li><a href="#" class="active">Home</a></li>
           <li><a href="#menu">Menu</a></li>
           <li><a href="#about">About</a></li>
           <li><a href="#reserve">Reservations</a></li>
@@ -209,9 +251,9 @@
         <form class="reservation-form">
           <input type="text" placeholder="Full Name" required />
           <input type="email" placeholder="Email Address" required />
-          <input type="date" required />
+          <input type="date" id="reservation-date" required />
           <input type="time" required />
-          <input type="number" placeholder="Guests" required />
+          <input type="number" placeholder="Guests" required min="1" />
           <button type="submit">Book Now</button>
         </form>
       </div>
